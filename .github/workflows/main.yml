@@ -32,10 +32,10 @@ jobs:
           pwd  # Печатает текущую директорию
           ls -la  # Показывает файлы в текущей директории
 
-      # Run POSTMAN collection (update the path if necessary)
+      # Run POSTMAN collection (use the correct path to the collection file)
       - name: Run POSTMAN collection
         run: |
-          newman run Postman-newman-ghActions-main/store.collectionv2.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darktheme > testResults/runreport.html
+          newman run store.collectionv2.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darktheme > testResults/runreport.html
 
       # Upload the contents of Test Result directory to workspace
       - name: Output the run Details

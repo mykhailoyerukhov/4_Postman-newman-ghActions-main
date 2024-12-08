@@ -1,32 +1,39 @@
 name: Test-Build
+
 on:
   push:
     branches:
       - main
-  jobs: 
-    test-api:
-      runs-on: ubuntu-latest
-    # Install node on server
+
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Install node on server
       - name: Install Node
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-    # Install the newman command line utility and also install the html extra reporter
+
+      # Install the newman command line utility and also install the html extra reporter
       - name: Install newman
-        run:
+        run: |
           npm install -g newman
           npm install -g newman-reporter-htmlextra
+
       # Make directory to upload the test results
       - name: Make directory for results
         run: mkdir -p testResults
-    # Run POSTMAN  collection
-      - name: Run POSTMAN collection
-        run:
-          newman run store.collectionv2.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter -htmlextra-darktheme > testresults/runreport.html
 
-    # Upload the contents of Test Result directory to workspace
+      # Run POSTMAN collection
+      - name: Run POSTMAN collection
+        run: |
+          newman run store.collectionv2.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darktheme > testresults/runreport.html
+
+      # Upload the contents of Test Result directory to workspace
       - name: Output the run Details
         uses: actions/upload-artifact@v2
         with:
           name: RunReports
-          patch: testResults
+          path: testResults

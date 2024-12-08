@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      # Checkout the code to ensure the repository is cloned
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       # Install Node.js (version >=16)
       - name: Install Node
         uses: actions/setup-node@v3

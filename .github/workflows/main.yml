@@ -18,13 +18,19 @@ jobs:
         run: |
           npm install -g newman
           npm install -g newman-reporter-htmlextra
+        shell: pwsh
 
-      - name: Make Directory for results
-        run: mkdir -p testResults
+      - name: Ensure testResults directory
+        run: New-Item -ItemType Directory -Path testResults -Force
+        shell: pwsh
 
       - name: Run POSTMAN collection
-        run: |
-          newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme > testResults/runreport1.html --verbose
+        run: newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme
+        shell: pwsh
+
+      - name: List testResults directory
+        run: Get-ChildItem -Path testResults
+        shell: pwsh
 
       - name: Output the run Details
         uses: actions/upload-artifact@v3

@@ -19,13 +19,6 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: Start Server
-        run: npm start & # Run server on background
-      
-      - name: wait for server to be ready
-        run: |
-          timeout 10 bash -c 'until echo > /dev/tcp/127.0.0.1/3000; do sleep 1; done'
-
       # Install Newman and the htmlextra reporter
       - name: Install Newman and Reporter
         run: |
@@ -36,7 +29,7 @@ jobs:
       - name: Create results directory
         run: mkdir -p testResults
 
-      # Run Postman collection with Newman
+      # Run Postman Collection with Newman
       - name: Run Postman Collection
         run: |
           newman run store.collectionv2.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darktheme

@@ -29,7 +29,7 @@ jobs:
       # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run: |
-          newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults1/htmlreport.html --reporter-htmlextra-darkTheme  > testResults1/runreport1.html
+          newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults1/htmlreport.html --reporter-htmlextra-darkTheme 
 
       # Upload the contents of Test Results directory to workspace
       - name: Output the run Details

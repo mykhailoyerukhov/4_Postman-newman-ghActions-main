@@ -32,7 +32,7 @@ jobs:
       # Run Postman collection with Newman
       - name: Run Postman Collection
         run: |
-          newman run store.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darktheme
+          newman run store.collection.json
 
       # Upload the test results as an artifact
       - name: Upload Test Results

@@ -39,7 +39,7 @@ jobs:
       # Run POSTMAN collection (use the correct path to the collection file)
       - name: Run POSTMAN collection
         run: |
-          newman run store.collectionv2.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darktheme > testResults/runreport.html
+          newman run store.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darktheme > testResults/runreport.html
 
       # Upload the contents of Test Result directory to workspace
       - name: Output the run Details

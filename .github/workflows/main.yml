@@ -7,35 +7,34 @@ jobs:
   test-api:
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # INstall Node on the runner
       - name: Install Node
         uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
-      # Install the newman command line utility and also install the html extra reporter
       - name: Install newman
         run: |
           npm install -g newman
           npm install -g newman-reporter-htmlextra
 
-      # Make directory to upload the test results
       - name: Make Directory for results
         run: mkdir -p testResults
 
-      # run script tern-on-api
-      - name: run script tern-on-api
-        run: npm run tern-on-api
+      - name: Run script tern-on-api
+        run: |
+          npm run tern-on-api &
+          npx wait-on http://localhost:3000
 
-      # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run: |
-          newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme 
+          newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme
 
-      # Upload the contents of Test Results directory to workspace
+      - name: Stop API Server
+        run: |
+          pkill -f yaml-server || true
+
       - name: Output the run Details
         uses: actions/upload-artifact@v3
         with:

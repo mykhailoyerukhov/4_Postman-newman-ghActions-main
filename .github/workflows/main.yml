@@ -22,18 +22,9 @@ jobs:
       - name: Make Directory for results
         run: mkdir -p testResults
 
-      - name: Run script tern-on-api
-        run: |
-          npm run tern-on-api &
-          npx wait-on http://localhost:3000
-
       - name: Run POSTMAN collection
         run: |
           newman run petstore.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme
-
-      - name: Stop API Server
-        run: |
-          pkill -f yaml-server || true
 
       - name: Output the run Details
         uses: actions/upload-artifact@v3

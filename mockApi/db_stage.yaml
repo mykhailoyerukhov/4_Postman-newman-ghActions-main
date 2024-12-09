@@ -109,39 +109,3 @@ users:
     signUpDate: 2019-08-24
     status: active
     level: consumer
-  - firstName: Dream
-    lastName: Real
-    email: dream.real@gmail.com
-    dateOfBirth: 2001-10-99
-    emailVerified: true
-    signUpDate: 2019-08-24
-    status: active
-    level: lord
-    id: 10
-  - firstName: Daniel
-    lastName: Daniel
-    email: Daniel@gmail.com
-    dateOfBirth: 2002-01-85
-    emailVerified: true
-    signUpDate: 2017-06-21
-    status: active
-    level: user
-    id: 11
-  - firstName: Daniel
-    lastName: Daniel
-    email: Daniel@gmail.com
-    dateOfBirth: 2002-01-85
-    emailVerified: true
-    signUpDate: 2017-06-21
-    status: active
-    level: user
-    id: 12
-  - firstName: Daniel
-    lastName: Daniel
-    email: Daniel@gmail.com
-    dateOfBirth: 2002-01-85
-    emailVerified: true
-    signUpDate: 2017-06-21
-    status: active
-    level: user
-    id: 13

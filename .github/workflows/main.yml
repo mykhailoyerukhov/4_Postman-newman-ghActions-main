@@ -33,7 +33,7 @@ jobs:
       # 5. Run POSTMAN collection
       - name: Run POSTMAN collection
         run: |
-          docker run -d --name newman_app -p 3000:3000 newman_app
+          docker run -d --name newman_app -p 3001:3000 newman_app
           docker exec newman_app newman run /app/store.collectionv2.json -r htmlextra --reporter-htmlextra-export /app/testResults/htmlreport.html --reporter-htmlextra-darkTheme
         shell: bash
 

@@ -24,6 +24,21 @@ jobs:
         run: |
           npm install -g newman newman-reporter-htmlextra
         shell: bash
+      
+      - name: List repository files
+        run: ls -la
+        shell: bash
+
+      - name: ensure testResults directory
+        run: mkdir -p testResults
+        shell: bash
+
+      - name: Check newman and reporter versions
+        run: |
+          newman --version
+          npm list -g newman-reporter-htmlextra
+        shell: bash
+
 
       # Шаг для запуска сервера
       - name: Start API server
@@ -44,3 +59,5 @@ jobs:
         with:
           name: RunReports
           path: testResults/htmlreport.html
+      
+

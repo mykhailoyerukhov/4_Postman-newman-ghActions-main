@@ -33,7 +33,8 @@ jobs:
       # 5. Run POSTMAN collection
       - name: Run POSTMAN collection
         run: |
-          newman run store.collectionv2.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme
+          docker run -d --name newman_app -p 3000:3000 newman_app
+          docker exec newman_app newman run /app/store.collectionv2.json -r htmlextra --reporter-htmlextra-export /app/testResults/htmlreport.html --reporter-htmlextra-darkTheme
         shell: bash
 
       # 6. List contents of testResults directory

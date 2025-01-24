@@ -32,6 +32,10 @@ jobs:
       - name: ensure testResults directory
         run: "mkdir -p testResults"
 
+      - name: List repository files
+        run: ls -la
+        shell: bash
+
       # Шаг для запуска сервера
       - name: Copy backup DB
         run: "cp mockApi/db_back_up.yaml mockApi/db_stage.yaml"

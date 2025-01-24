@@ -22,7 +22,7 @@ jobs:
       # 3. Start API Server in Docker
       - name: Start API Server
         run: |
-          docker run -d -p 3000:3000 --name newman_app
+          docker run -d -p 3000:3000 --name newman_container newman_app
         shell: bash
 
       # 4. Ensure testResults directory exists

@@ -21,37 +21,27 @@ jobs:
 
       # Устанавливаем необходимые пакеты (newman, репортеры)
       - name: Install dependencies
-        run: |
-          npm install -g newman newman-reporter-htmlextra
-        shell: bash
+        run: "npm install -g newman"
+
+      - name: "Install newman reporter"
+        run: "npm install -g newman-reporter-htmlextra"
       
       - name: List repository files
-        run: ls -la
-        shell: bash
+        run: "ls -la"
 
       - name: ensure testResults directory
-        run: mkdir -p testResults
-        shell: bash
-
-      - name: Check newman and reporter versions
-        run: |
-          newman --version
-          npm list -g newman-reporter-htmlextra
-        shell: bash
-
+        run: "mkdir -p testResults"
 
       # Шаг для запуска сервера
+      - name: Copy backup DB
+        run: "cp mockApi/db_back_up.yaml mockApi/db_stage.yaml"
+
       - name: Start API server
-        run: |
-          cp mockApi/db_back_up.yaml mockApi/db_stage.yaml
-          npx yaml-server --hotReload=off --autoStart=off --port 3000 --database ./mockApi/db_stage.yaml &
-        shell: bash
+        run: "npx yaml-server --hotReload=off --autoStart=off --port 3000 --database ./mockApi/db_stage.yaml &"
 
       # Шаг для выполнения коллекции Postman с использованием Newman
       - name: Run POSTMAN collection
-        run: |
-          newman run storev2.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme
-        shell: bash
+        run: "newman run storev2.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme"
 
       # Шаг для вывода отчета о выполнении тестов
       - name: Upload test results

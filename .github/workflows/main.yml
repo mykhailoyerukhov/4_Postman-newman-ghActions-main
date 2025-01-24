@@ -41,7 +41,7 @@ jobs:
 
       # Шаг для выполнения коллекции Postman с использованием Newman
       - name: Run POSTMAN collection
-        run: "newman run storev2.collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme"
+        run: "newman run petstore.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme"
 
       # Шаг для вывода отчета о выполнении тестов
       - name: Upload test results

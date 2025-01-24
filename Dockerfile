@@ -5,6 +5,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
+# Устанавливаем Newman и репортер
+RUN npm install -g newman newman-reporter-htmlextra
+
 # Копируем весь проект
 COPY . .
 

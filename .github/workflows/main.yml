@@ -1,57 +1,46 @@
 name: Test-Build
+
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   test-api:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Можно использовать Linux-агент, или Windows, если нужно
 
     steps:
-      # 1. Checkout the repository
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      # 2. Build Docker image
-      - name: Build Docker Image
+      # Устанавливаем Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      # Устанавливаем необходимые пакеты (newman, репортеры)
+      - name: Install dependencies
         run: |
-          docker build -t newman_app .
+          npm install -g newman newman-reporter-htmlextra
         shell: bash
 
-      # 3. Start API Server in Docker
-      - name: Start API Server
+      # Шаг для запуска сервера
+      - name: Start API server
         run: |
-          docker run -d -p 3000:3000 --name newman_container newman_app
+          cp mockApi/db_back_up.yaml mockApi/db_stage.yaml
+          npx yaml-server --hotReload=off --autoStart=off --port 3000 --database ./mockApi/db_stage.yaml &
         shell: bash
 
-      # 4. Ensure testResults directory exists
-      - name: Ensure testResults directory
-        run: mkdir -p testResults
-        shell: bash
-
-      # 5. Run POSTMAN collection
+      # Шаг для выполнения коллекции Postman с использованием Newman
       - name: Run POSTMAN collection
         run: |
-          docker run -d --name newman_app -p 3001:3000 newman_app
-          docker exec newman_app newman run /app/store.collectionv2.json -r htmlextra --reporter-htmlextra-export /app/testResults/htmlreport.html --reporter-htmlextra-darkTheme
+          newman run store.collectionv2.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme
         shell: bash
 
-      # 6. List contents of testResults directory
-      - name: List testResults directory
-        run: ls -la testResults
-        shell: bash
-
-      # 7. Upload report as artifact
-      - name: Upload Newman Report
+      # Шаг для вывода отчета о выполнении тестов
+      - name: Upload test results
         uses: actions/upload-artifact@v3
         with:
           name: RunReports
-          path: testResults
-
-      # 8. Clean up Docker
-      - name: Clean up Docker
-        run: |
-          docker stop newman_app
-          docker rm newman_app
-        shell: bash
+          path: testResults/htmlreport.html

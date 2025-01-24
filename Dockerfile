@@ -11,7 +11,7 @@ RUN npm install
 RUN npm install -g newman
 
 # Устанавливаем репортер как зависимость проекта
-RUN npm install --save newman-reporter-htmlextra
+RUN npm install -g newman newman-reporter-htmlextra
 
 # Копируем весь проект
 COPY . .

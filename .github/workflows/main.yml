@@ -30,22 +30,6 @@ jobs:
       - name: Start API server
         run: npx yaml-server --hotReload=off --autoStart=off --port 3000 --database ./mockApi/db_stage.yaml &
 
-      # Ожидаем, пока сервер действительно запустится и ответит по нужному эндпоинту
-      - name: Wait for API to be ready
-        run: |
-          for i in {1..15}; do
-            status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/products/9)
-            if [ "$status" -eq "200" ]; then
-              echo "API is ready with status code $status"
-              exit 0
-            else
-              echo "Waiting for API... attempt $i, got status $status"
-              sleep 2
-            fi
-          done
-          echo "API did not become ready in time"
-          exit 1
-
       - name: Install Newman
         run: npm install -g newman
 

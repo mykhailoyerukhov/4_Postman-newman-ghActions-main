@@ -453,13 +453,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/products/6",
+							"raw": "{{baseUrl}}/products/1",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"products",
-								"6"
+								"1"
 							]
 						}
 					},

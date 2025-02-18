@@ -27,31 +27,11 @@ products:
     sku: 3452378139237
     description: some random vegetable
     id: 5
-  - name: vegetable
-    price: 25
-    sku: 3452378139237
-    description: some random vegetable
-    id: 6
-  - name: vegetable
-    price: 25
-    sku: 3452378139237
-    description: some random vegetable
-    id: 7
-  - name: vegetable
-    price: 25
-    sku: 3452378139237
-    description: some random vegetable
-    id: 8
-  - name: banana
-    price: 155
-    sku: 777777777
-    description: name, sku and price has changed
-    id: 9
   - name: pepper
     price: 18
     sku: 3545732485
     description: spicy and savour
-    id: 10
+    id: 6
 orders:
   - id: 1
     name: order1
@@ -147,3 +127,12 @@ users:
     signUpDate: 2019-08-24
     status: active
     level: consumer
+  - firstName: Daniel
+    lastName: Craig
+    email: daniel.craig345@gmail.com
+    dateOfBirth: 2002-01-85
+    emailVerified: true
+    signUpDate: 2017-06-21
+    status: active
+    level: user
+    id: 10

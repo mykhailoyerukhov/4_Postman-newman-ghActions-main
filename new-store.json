@@ -1573,13 +1573,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/users/10",
+							"raw": "{{baseUrl}}/users",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"users",
-								"10"
+								"users"
 							]
 						}
 					},
@@ -1631,59 +1630,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/users/:id",
+							"raw": "{{baseUrl}}/users/10",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"users",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "10"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get user by ID (invalid id)",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Have error not found 404\", function () {\r",
-									"    const jsonData = pm.response.json();\r",
-									"    pm.expect(pm.response.code).to.equal(404);\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/users/:id",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "112"
-								}
+								"10"
 							]
 						}
 					},
@@ -1704,40 +1657,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/users/11",
+							"raw": "{{baseUrl}}/users/10",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"users",
-								"11"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Remove user by ID (invalid id)",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/users/1134",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users",
-								"1134"
+								"10"
 							]
 						}
 					},

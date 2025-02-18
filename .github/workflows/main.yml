@@ -18,8 +18,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Start mock API server
-        run: npm run tern-on-api &
+      - name: Copy backup DB
+        run: "cp mockApi/db_back_up.yaml mockApi/db_stage.yaml"
+
+      - name: Start API server
+        run: npx yaml-server --hotReload=off --autoStart=off --port 3000 --database ./mockApi/db_stage.yaml &
+
+
       
       - name: Wait for API to be ready
         run: sleep 10

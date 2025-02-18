@@ -21,7 +21,7 @@ jobs:
         run: npm run tern-on-api &
       
       - name: Wait for API to be ready
-        run: sleep 5
+        run: npx wait-on http://localhost:3000
 
       - name: Install Newman
         run: npm install -g newman

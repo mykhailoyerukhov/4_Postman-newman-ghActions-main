@@ -47,6 +47,11 @@ products:
     sku: 777777777
     description: name, sku and price has changed
     id: 9
+  - name: pepper
+    price: 18
+    sku: 3545732485
+    description: spicy and savour
+    id: 10
 orders:
   - id: 1
     name: order1

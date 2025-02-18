@@ -79,7 +79,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"garlic\",\r\n    \"price\": 12,\r\n    \"sku\": 888888888888,\r\n    \"description\": \"very healthy\"\r\n}",
+							"raw": "{\r\n    \"name\": \"pepper\",\r\n    \"price\": 18,\r\n    \"sku\": 3545732485,\r\n    \"description\": \"spicy and savour\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -453,13 +453,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/products/9",
+							"raw": "{{baseUrl}}/products/6",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"products",
-								"9"
+								"6"
 							]
 						}
 					},

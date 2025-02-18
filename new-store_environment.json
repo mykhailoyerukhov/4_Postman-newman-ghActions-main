@@ -4,36 +4,36 @@
 	"values": [
 		{
 			"key": "id",
-			"value": "",
+			"value": "9",
 			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "firstName",
-			"value": "",
+			"value": "\"Daniel\"",
 			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "lastName",
-			"value": "",
+			"value": "\"Craig\"",
 			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "email",
-			"value": "",
+			"value": "\"daniel.craig345@gmail.com\"",
 			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "baseUrl",
-			"value": "",
+			"value": "http://localhost:3000",
 			"type": "default",
 			"enabled": true
 		}
 	],
 	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2025-02-18T16:24:35.928Z",
+	"_postman_exported_at": "2025-02-18T16:46:16.398Z",
 	"_postman_exported_using": "Postman/11.33.0"
 }

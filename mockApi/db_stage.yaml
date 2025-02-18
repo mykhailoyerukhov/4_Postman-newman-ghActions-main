@@ -17,6 +17,36 @@ products:
     price: 30
     sku: 999921312423312
     description: awesome
+  - name: orange
+    price: 8
+    sku: 123321123
+    description: wouh
+    id: 4
+  - name: vegetable
+    price: 25
+    sku: 3452378139237
+    description: some random vegetable
+    id: 5
+  - name: vegetable
+    price: 25
+    sku: 3452378139237
+    description: some random vegetable
+    id: 6
+  - name: vegetable
+    price: 25
+    sku: 3452378139237
+    description: some random vegetable
+    id: 7
+  - name: vegetable
+    price: 25
+    sku: 3452378139237
+    description: some random vegetable
+    id: 8
+  - name: banana
+    price: 155
+    sku: 777777777
+    description: name, sku and price has changed
+    id: 9
 orders:
   - id: 1
     name: order1
